@@ -1,3 +1,4 @@
+import 'package:blabla/utils/animations_util.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../model/ride/locations.dart';
@@ -62,7 +63,9 @@ class _RidePrefFormState extends State<RidePrefForm> {
 
   void onDeparturePressed() async {
     final selectedLocation = await Navigator.of(context).push<Location>(
-      MaterialPageRoute(builder: (ctx) => const BlaLocationPicker()),
+      AnimationUtils.createTopToBottomRoute(
+        BlaLocationPicker(initialLocation: departure),
+      ),
     );
 
     if (selectedLocation != null) {
@@ -72,7 +75,9 @@ class _RidePrefFormState extends State<RidePrefForm> {
 
   void onArrivalPressed() async {
     final selectedLocation = await Navigator.of(context).push<Location>(
-      MaterialPageRoute(builder: (ctx) => const BlaLocationPicker()),
+      AnimationUtils.createTopToBottomRoute(
+        BlaLocationPicker(initialLocation: arrival),
+      ),
     );
 
     if (selectedLocation != null) {
