@@ -13,14 +13,19 @@ class RidesService {
     return rides.where((ride) => ride.departureLocation == departure).toList();
   }
 
-  static List<Ride> filterBySeatRequested(
-    List<Ride> rides,
-    Location departure,
-  ) {
-    return rides.where((ride) => ride.departureLocation == departure).toList();
+  static List<Ride> filterBySeatRequested(List<Ride> rides, int seatRequested) {
+    return rides
+        .where((rides) => rides.availableSeats >= seatRequested)
+        .toList();
   }
 
   static List<Ride> filterBy({Location? departure, int? seatRequested}) {
-    return [];
+    return availableRides
+        .where(
+          (rides) =>
+              (departure == null || rides.departureLocation == departure) &&
+              (seatRequested == null || rides.availableSeats >= seatRequested),
+        )
+        .toList();
   }
 }
