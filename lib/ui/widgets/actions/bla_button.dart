@@ -12,7 +12,7 @@ class BlaButton extends StatelessWidget {
     super.key,
     required this.text,
     this.onPressed,
-    required this.type,
+    this.type = BlaButtonType.primary,
     this.icon,
   });
 

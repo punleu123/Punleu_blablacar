@@ -17,6 +17,7 @@ class RidePrefsScreen extends StatelessWidget {
 
   void onRidePrefSelected(RidePref ridePref) {
     // TODO
+    RidePrefsService.selectedRidePref = ridePref;
   }
 
   @override
